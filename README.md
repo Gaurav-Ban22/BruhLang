@@ -16,8 +16,8 @@
 
 1. `git clone https://github.com/Gaurav-Ban22/BruhLang.git`
 2. `cd ./bruhlang`
-3. `npm build`
-4. `npm link`
+3. `npm run build && npm link`
+4. Enjoy!
 
 # How to use
 
