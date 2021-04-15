@@ -10,7 +10,7 @@
 -   \- Decrease value at pointer
 -   % Print value at pointer
 -   $ Print value at pointer but as an ASCII character
--   0-9 Set value at pointer to given value
+-   0-9 Set pointer value to given number (works with multiple digits e.g. 35)
 
 # How to install
 
