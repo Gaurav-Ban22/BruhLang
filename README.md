@@ -1,6 +1,6 @@
 # Bruh Lang
 
-## Esoteric\* Language made with Typescript
+## Esoteric Language made with Typescript
 
 # Symbols
 
@@ -9,6 +9,7 @@
 -   \+ Increase value at pointer
 -   \- Decrease value at pointer
 -   % Print value at pointer
+-   $ Print value at pointer but as an ASCII character
 -   0-9 Set value at pointer to given value
 
 # How to install
@@ -28,4 +29,8 @@ Example: `bruh -m code -c "2%>1%"` (there may be bugs if you don't use quotes)
 
 Example: `bruh -m file -f ./main.bruh`
 
-\*we don't know what it even means lol -devs
+# Flags
+
+-   -m, -mode: Tells the interpreter if the code is in a string or a file
+-   -c, -code: Tells the interpreter what the code is if the -mode flag is "code"
+-   -f, -file: Tells the interpreter where the file with the code is located if the -mode flag is "file"

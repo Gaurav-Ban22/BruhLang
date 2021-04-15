@@ -26,6 +26,13 @@ export default function parse(code: string, malloc: number = 128): void {
             case "%":
                 console.log(memory[pointer]);
                 break;
+            case "$":
+                if (memory[pointer] > 127 || memory[pointer] < 0) {
+                    log.error("Invalid char code. (0-127 only)");
+                    process.exit(1);
+                }
+                console.log(String.fromCharCode(memory[pointer]));
+                break;
             default:
                 log.error(`Symbol ${line} not found.`);
                 process.exit(1);
