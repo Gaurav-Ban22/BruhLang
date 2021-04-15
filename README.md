@@ -8,9 +8,12 @@
 -   \> Increase pointer
 -   \+ Increase value at pointer
 -   \- Decrease value at pointer
+-   ^ Squares the current vale of the pointer
+-   0-9 Set pointer value to given number (works with multiple digits e.g. 35)
 -   % Print value at pointer
 -   $ Print value at pointer but as an ASCII character
--   0-9 Set pointer value to given number (works with multiple digits e.g. 35)
+
+Note: All symbols that do not have output write to the pointer.
 
 # How to install
 
@@ -23,14 +26,13 @@
 
 ## Just running a piece of code (e.g. 2%>1%)
 
-Example: `bruh -m code -c "2%>1%"` (there may be bugs if you don't use quotes)
+Example: `bruh -c "2%>1%"` (there may be bugs if you don't use quotes)
 
 ## Running a bruh file (i.e. \*.bruh)
 
-Example: `bruh -m file -f ./main.bruh`
+Example: `bruh -f ./main.bruh`
 
 # Flags
 
--   -m, -mode: Tells the interpreter if the code is in a string or a file
--   -c, -code: Tells the interpreter what the code is if the -mode flag is "code"
--   -f, -file: Tells the interpreter where the file with the code is located if the -mode flag is "file"
+-   -c, --code: Runs input string in BruhLang
+-   -f, --file: Runs BruhLang file (.bruh)

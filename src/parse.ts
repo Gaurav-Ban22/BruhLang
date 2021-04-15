@@ -8,10 +8,10 @@ export default function parse(code: string, malloc: number = 2 ** 16): void {
     lines.forEach((line) => {
         if (!isNaN(parseInt(line))) {
             currentNum = currentNum * 10 + parseInt(line);
+            memory[pointer] = currentNum;
             return;
         }
         if (isNaN(parseInt(line))) {
-            memory[pointer] = currentNum;
             currentNum = 0;
         }
         switch (line) {
@@ -27,20 +27,15 @@ export default function parse(code: string, malloc: number = 2 ** 16): void {
             case "-":
                 memory[pointer]--;
                 break;
+            case "^":
+                memory[pointer] = memory[pointer] ** 2;
+                break;
             case "%":
                 console.log(memory[pointer]);
                 break;
             case "$":
-                if (memory[pointer] > 255 || memory[pointer] < 0) {
-                    log.error("Invalid char code. (0-255 only)");
-                    process.exit(1);
-                }
                 console.log(String.fromCharCode(memory[pointer]));
                 break;
-            case "^":
-                memory[pointer] = memory[pointer] ** 2;
-                break;
-
             default:
                 log.error(`Symbol ${line} not found.`);
                 process.exit(1);
