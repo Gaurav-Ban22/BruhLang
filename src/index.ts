@@ -8,35 +8,55 @@ import * as log from "./log";
 
 const args = yargs
     .options({
-        mode: { type: "string", demandOption: true, alias: "m" },
         file: { type: "string", demandOption: false, alias: "f" },
         code: { type: "string", demandOption: false, alias: "c" },
     })
     .check((argv) => {
-        // currently broken (runs stuff but doesnt have message if incorrect args)
-        if (argv.file && !argv.code) return true;
-        if (!argv.file && argv.code) return true;
-        if (argv.file && argv.file.endsWith(".bruh")) return true;
-        if (argv.mode === "file" || argv.mode === "code") return true;
-        if (argv.mode === "code" || argv.code?.trim().length !== 0) return true;
-        if (argv.file!.length > 0 || argv.code!.length > 0) return true;
-        throw new Error(
-            "You must provide only either BruhLang code or a BruhLang file (.bruh)."
-        );
+        // check if file/code is truthy even if trimmed
+        const codeExists =
+            argv.code?.trim() !== "" && argv.code !== undefined ? true : false;
+        const fileExists =
+            argv.file?.trim() !== "" && argv.file !== undefined ? true : false;
+        const { code, file } = argv;
+
+        // if it is a file
+        if (!fileExists && argv.file !== undefined) {
+            log.error("No file provided.");
+            process.exit(1);
+        }
+        if (fileExists) {
+            if (!file?.endsWith(".bruh")) {
+                log.error("Input file was not a BruhLang file.");
+                process.exit(1);
+            }
+            if (!fs.existsSync(path.resolve(process.cwd(), file))) {
+                log.error("Input file does not exist");
+                process.exit(1);
+            }
+            return true;
+        }
+
+        // if it is code
+        if (!codeExists && argv.code !== undefined) {
+            log.error("No code provided.");
+            process.exit(1);
+        }
+        return true;
     }).argv;
 
-const { mode, file } = args;
-let { code } = args;
+const { file, code } = args;
 
-if (mode === "file" && file) {
+let sourceCode: string;
+
+if (file) {
     const sourcePath = path.resolve(process.cwd(), file);
-    if (!fs.existsSync(sourcePath)) {
-        log.error(`File ${file} not found.`);
-        process.exit(1);
-    }
     const source = fs.readFileSync(sourcePath, { encoding: "utf-8" });
-    code = source.trim().split("\n").join("");
-    parse(code);
-} else if (mode === "code" && code) {
-    parse(code);
+    sourceCode = source.trim().split("\n").join("");
+} else if (code) {
+    sourceCode = code.trim();
+} else {
+    log.error("Something went wrong, please report this error.");
+    process.exit(1);
 }
+
+parse(sourceCode);
