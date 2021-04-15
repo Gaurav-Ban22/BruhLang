@@ -21,5 +21,3 @@ if (mode === "file") {
 } else if (mode === "string") {
     parse(code);
 }
-
-// ts-node . -s >>+++++%

@@ -4,7 +4,12 @@ export default function parse(code: string, malloc: number = 128): void {
     const lines = code.split("");
     const memory: number[] = new Array(malloc).fill(0);
     let pointer = 0;
+    const numRegex = /[0-9]/;
     lines.forEach((line) => {
+        if (!isNaN(parseInt(line))) {
+            memory[pointer] = parseInt(line);
+            return;
+        }
         switch (line) {
             case "<":
                 pointer--;

@@ -4,7 +4,7 @@
 # Symbols
 - < Decrease pointer
 - \> Increase pointer
-- + Increase value at pointer
+- \+ Increase value at pointer
 - \- Decrease value at pointer
 - % Print value at pointer
 
