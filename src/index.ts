@@ -4,6 +4,7 @@ import yargs from "yargs";
 import path from "path";
 import parse from "./parse";
 import fs from "fs";
+import * as log from "./log";
 
 const args = yargs
     .options({
@@ -29,6 +30,10 @@ let { code } = args;
 
 if (mode === "file" && file) {
     const sourcePath = path.resolve(process.cwd(), file);
+    if (!fs.existsSync(sourcePath)) {
+        log.error(`File ${file} not found.`);
+        process.exit(1);
+    }
     const source = fs.readFileSync(sourcePath, { encoding: "utf-8" });
     code = source.trim().split("\n").join("");
     parse(code);
