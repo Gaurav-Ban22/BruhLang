@@ -55,8 +55,10 @@ if (file) {
 } else if (code) {
     sourceCode = code.trim();
 } else {
-    log.error("Something went wrong, please report this error.");
-    process.exit(1);
+    log.log(
+        "\n--file: <file path>\n--code: <string>\nYou need to provide only one of these."
+    );
+    process.exit(0);
 }
 
 parse(sourceCode);

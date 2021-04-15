@@ -2,6 +2,10 @@
 
 ##### \*Does not include any logs from 1.3.0 or lower
 
+#### 1.3.2
+
+-   Added colors for console messages with chalk
+
 ### 1.3.1
 
 -   Changed CLI argument handling
