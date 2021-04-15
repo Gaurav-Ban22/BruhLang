@@ -1,10 +1,10 @@
 import * as log from "./log";
 
 export default function parse(code: string, malloc: number = 128): void {
-    const lines = code.split("");
+    const lines = code.trim().split("");
     const memory: number[] = new Array(malloc).fill(0);
     let pointer = 0;
-    const numRegex = /[0-9]/;
+    // const numRegex = /[0-9]/; unneeded atm
     lines.forEach((line) => {
         if (!isNaN(parseInt(line))) {
             memory[pointer] = parseInt(line);
@@ -28,7 +28,7 @@ export default function parse(code: string, malloc: number = 128): void {
                 break;
             default:
                 log.error(`Symbol ${line} not found.`);
-                process.exit(1);  
+                process.exit(1);
         }
     });
 }
