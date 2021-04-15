@@ -10,14 +10,14 @@
 -   \- Decrease value at pointer
 -   % Print value at pointer
 -   $ Print value at pointer but as an ASCII character
--   0-9 Set value at pointer to given value
+-   0-9 Set pointer value to given number (works with multiple digits e.g. 35)
 
 # How to install
 
 1. `git clone https://github.com/Gaurav-Ban22/BruhLang.git`
 2. `cd ./bruhlang`
-3. `npm build`
-4. `npm link`
+3. `npm run build && npm link`
+4. Enjoy!
 
 # How to use
 
