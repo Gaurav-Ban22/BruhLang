@@ -1,6 +1,6 @@
 {
     "name": "bruhlang",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Garbage programming lang made with typescript big pog",
     "main": "src/index.ts",
     "scripts": {
