@@ -1,15 +1,23 @@
 {
     "name": "bruhlang",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Garbage programming lang made with typescript big pog",
     "main": "src/index.ts",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "ts-node ."
+        "build": "npx tsc",
+        "dev": "ts-node .",
+        "test": "ts-node . -m file -f ./tests/main.bruh"
+    },
+    "bin": {
+        "bruh": "dist/src/index.js"
     },
     "author": "narutopig and Gaurav-Ban22",
     "license": "ISC",
     "devDependencies": {
-        "@types/node": "^14.14.39"
+        "@types/node": "^14.14.39",
+        "@types/yargs": "^16.0.1"
+    },
+    "dependencies": {
+        "yargs": "^16.2.0"
     }
 }
