@@ -1,12 +1,14 @@
 {
     "name": "bruhlang",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "description": "Garbage programming lang made with typescript big pog",
     "main": "src/index.ts",
     "scripts": {
         "build": "npx tsc",
         "dev": "ts-node .",
-        "test": "ts-node . --file ./tests/alphabet.bruh"
+        "test": "ts-node . --file ./tests/alphabet.bruh",
+        "code": "ts-node . --code $1",
+        "file": "ts-node . --file $1"
     },
     "bin": {
         "bruh": "dist/src/index.js"

@@ -2,6 +2,10 @@
 
 ##### \*Does not include any logs from 1.3.0 or lower
 
+### 1.3.4
+
+-   Updated dependencies and added some commands
+
 ### 1.3.3
 
 -   Fixed version number and updated test command
